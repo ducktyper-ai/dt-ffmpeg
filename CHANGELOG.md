@@ -1,12 +1,32 @@
 # Changelog
 
-All notable changes to ffmpeg-zeo are documented in this file.
+All notable changes to dt-ffmpeg (formerly ffmpeg-zeo) are documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 While the project is below 1.0, minor releases may include breaking API changes.
 
 ## [Unreleased]
+
+## [0.2.0] - 2026-11-21
+
+### Changed
+
+- **Renamed from ffmpeg-zeo to dt-ffmpeg.** PyPI cannot rename a project, so
+  this is published as a new distribution `dt-ffmpeg`.
+  - Import: `import dt_ffmpeg` (was `ffmpeg_zeo`).
+  - CLI: `dt-ffmpeg` (was `ffmpeg-zeo`); MCP server: `dt-ffmpeg-mcp`.
+  - Repository: `ducktyper-ai/dt-ffmpeg`.
+- `make verify` is now the release gate; `make check` remains as an alias.
+
+### Added
+
+- `make help`, `make doctor`, `make hooks` and `make clean` targets.
+
+### Migration
+
+`pip install dt-ffmpeg` and replace `ffmpeg_zeo` with `dt_ffmpeg`. The final
+`ffmpeg-zeo` 0.1.1 is a stub that depends on `dt-ffmpeg` and warns on import.
 
 ## [0.1.0] - 2026-08-19
 

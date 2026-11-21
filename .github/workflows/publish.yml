@@ -60,7 +60,7 @@ jobs:
       - name: Verify tag matches package version
         if: github.event_name == 'push'
         run: |
-          package_version="$(uv run python -c 'import ffmpeg_zeo; print(ffmpeg_zeo.__version__)')"
+          package_version="$(uv run python -c 'import dt_ffmpeg; print(dt_ffmpeg.__version__)')"
           test "${GITHUB_REF_NAME}" = "v${package_version}"
       - name: Build sdist and wheel
         run: uv build
@@ -70,8 +70,8 @@ jobs:
         run: |
           uv venv --python 3.12 .release-venv
           uv pip install --python .release-venv/bin/python dist/*.whl
-          .release-venv/bin/python -c 'import ffmpeg_zeo; assert ffmpeg_zeo.__version__ == "0.1.0"'
-          .release-venv/bin/ffmpeg-zeo version
+          .release-venv/bin/python -c 'import dt_ffmpeg; assert dt_ffmpeg.__version__ == "0.1.0"'
+          .release-venv/bin/dt-ffmpeg version
       - name: Upload distribution artifact
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
@@ -90,7 +90,7 @@ jobs:
     timeout-minutes: 5
     environment:
       name: testpypi
-      url: https://test.pypi.org/p/ffmpeg-zeo
+      url: https://test.pypi.org/p/dt-ffmpeg
     permissions:
       id-token: write
     steps:
@@ -115,7 +115,7 @@ jobs:
     timeout-minutes: 5
     environment:
       name: pypi
-      url: https://pypi.org/p/ffmpeg-zeo
+      url: https://pypi.org/p/dt-ffmpeg
     permissions:
       id-token: write
     steps:

@@ -1,4 +1,4 @@
-ffmpeg-zeo
+dt-ffmpeg
 Copyright 2026 Zero Employee Organizations
 
 This product includes software conceptually inspired by:
@@ -6,5 +6,5 @@ This product includes software conceptually inspired by:
 - pyffmpeg (deuteronomy-works) — Apache-2.0
 
 FFmpeg and ffprobe are separate programs. Optional downloaded builds from
-BtbN FFmpeg-Builds (LGPL variants) are not part of the Apache-2.0 ffmpeg-zeo
+BtbN FFmpeg-Builds (LGPL variants) are not part of the Apache-2.0 dt-ffmpeg
 source distribution. Do not ship GPL FFmpeg inside this package.

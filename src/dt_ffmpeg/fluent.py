@@ -5,10 +5,10 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from typing import Any
 
-from ffmpeg_zeo.compile import compile_graph as compile_ir
-from ffmpeg_zeo.compile import get_args as get_args_ir
-from ffmpeg_zeo.escape import escape_chars
-from ffmpeg_zeo.ir import (
+from dt_ffmpeg.compile import compile_graph as compile_ir
+from dt_ffmpeg.compile import get_args as get_args_ir
+from dt_ffmpeg.escape import escape_chars
+from dt_ffmpeg.ir import (
     FilterNode,
     Graph,
     InputNode,
@@ -16,9 +16,9 @@ from ffmpeg_zeo.ir import (
     OverwritePolicy,
     StreamRef,
 )
-from ffmpeg_zeo.run import RunResult
-from ffmpeg_zeo.run import run as run_graph
-from ffmpeg_zeo.run import run_async as run_graph_async
+from dt_ffmpeg.run import RunResult
+from dt_ffmpeg.run import run as run_graph
+from dt_ffmpeg.run import run_async as run_graph_async
 
 
 @dataclass

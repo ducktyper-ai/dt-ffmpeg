@@ -7,7 +7,7 @@ import shutil
 
 import pytest
 
-import ffmpeg_zeo as ffmpeg
+import dt_ffmpeg as ffmpeg
 
 pytestmark = pytest.mark.integration
 

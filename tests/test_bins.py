@@ -4,14 +4,14 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from ffmpeg_zeo.bins import cache_dir, resolve_binaries
-from ffmpeg_zeo.errors import BinaryNotFoundError
+from dt_ffmpeg.bins import cache_dir, resolve_binaries
+from dt_ffmpeg.errors import BinaryNotFoundError
 
 
 def test_cache_dir(tmp_path: Path, monkeypatch) -> None:  # type: ignore[no-untyped-def]
     monkeypatch.setenv("XDG_CACHE_HOME", str(tmp_path))
     path = cache_dir()
-    assert path == tmp_path / "ffmpeg-zeo"
+    assert path == tmp_path / "dt-ffmpeg"
     assert path.is_dir()
 
 
@@ -31,8 +31,8 @@ def test_resolve_from_env(tmp_path: Path, monkeypatch) -> None:  # type: ignore[
 def test_missing_binary(monkeypatch) -> None:  # type: ignore[no-untyped-def]
     monkeypatch.delenv("FFMPEG_BINARY", raising=False)
     monkeypatch.delenv("FFPROBE_BINARY", raising=False)
-    monkeypatch.setattr("ffmpeg_zeo.bins._which", lambda name: None)
-    monkeypatch.setattr("ffmpeg_zeo.bins._cached_bins", lambda: None)
+    monkeypatch.setattr("dt_ffmpeg.bins._which", lambda name: None)
+    monkeypatch.setattr("dt_ffmpeg.bins._cached_bins", lambda: None)
     try:
         resolve_binaries(download=False)
     except BinaryNotFoundError:

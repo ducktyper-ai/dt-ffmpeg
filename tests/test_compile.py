@@ -6,7 +6,7 @@ import os
 
 import pytest
 
-import ffmpeg_zeo as ffmpeg
+import dt_ffmpeg as ffmpeg
 
 SAMPLE = os.path.join(os.path.dirname(__file__), "sample_data")
 IN1 = os.path.join(SAMPLE, "in1.mp4")
@@ -15,7 +15,7 @@ OUT1 = os.path.join(SAMPLE, "out1.mp4")
 
 
 def test_escape_chars() -> None:
-    from ffmpeg_zeo.escape import escape_chars
+    from dt_ffmpeg.escape import escape_chars
 
     assert escape_chars("a:b", ":") == r"a\:b"
     assert escape_chars("a\\:b", ":\\") == "a\\\\\\:b"

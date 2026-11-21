@@ -11,10 +11,10 @@ from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any
 
-from ffmpeg_zeo.bins import get_ffmpeg_bin
-from ffmpeg_zeo.compile import compile_graph
-from ffmpeg_zeo.errors import FFmpegError
-from ffmpeg_zeo.ir import Graph, OverwritePolicy
+from dt_ffmpeg.bins import get_ffmpeg_bin
+from dt_ffmpeg.compile import compile_graph
+from dt_ffmpeg.errors import FFmpegError
+from dt_ffmpeg.ir import Graph, OverwritePolicy
 
 
 @dataclass
@@ -129,7 +129,7 @@ async def run_async(
     progress_path: Path | None = None
     if on_progress is not None:
         tmp = tempfile.NamedTemporaryFile(
-            prefix="ffmpeg-zeo-progress-", suffix=".txt", delete=False
+            prefix="dt-ffmpeg-progress-", suffix=".txt", delete=False
         )
         progress_path = Path(tmp.name)
         tmp.close()

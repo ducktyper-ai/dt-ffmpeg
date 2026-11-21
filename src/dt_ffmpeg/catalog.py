@@ -8,7 +8,7 @@ from functools import lru_cache
 
 from pydantic import BaseModel
 
-from ffmpeg_zeo.bins import get_ffmpeg_bin
+from dt_ffmpeg.bins import get_ffmpeg_bin
 
 
 class FilterInfo(BaseModel):

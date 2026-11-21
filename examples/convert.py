@@ -1,6 +1,6 @@
 """Convert a file with the one-liner recipe."""
 
-from ffmpeg_zeo import convert, probe
+from dt_ffmpeg import convert, probe
 
 SRC = "in.mp4"
 DST = "out.mp3"

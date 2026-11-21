@@ -1,4 +1,4 @@
-from ffmpeg_zeo.cli import main
+from dt_ffmpeg.cli import main
 
 if __name__ == "__main__":
     main()

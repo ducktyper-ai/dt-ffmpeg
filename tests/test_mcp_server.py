@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import pytest
 
-import ffmpeg_zeo.mcp_server as mcp_server
+import dt_ffmpeg.mcp_server as mcp_server
 
 
 def test_main_explains_optional_dependency(
@@ -18,4 +18,4 @@ def test_main_explains_optional_dependency(
     with pytest.raises(SystemExit, match="1"):
         mcp_server.main()
 
-    assert 'pip install "ffmpeg-zeo[mcp]"' in capsys.readouterr().err
+    assert 'pip install "dt-ffmpeg[mcp]"' in capsys.readouterr().err

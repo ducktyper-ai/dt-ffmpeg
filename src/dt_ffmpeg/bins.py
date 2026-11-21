@@ -13,9 +13,9 @@ from dataclasses import dataclass
 from pathlib import Path
 from urllib.request import urlopen
 
-from ffmpeg_zeo.errors import BinaryNotFoundError
+from dt_ffmpeg.errors import BinaryNotFoundError
 
-_CACHE_DIR_NAME = "ffmpeg-zeo"
+_CACHE_DIR_NAME = "dt-ffmpeg"
 
 # BtbN LGPL essentials (not GPL). macOS is not published there; we fall back to PATH.
 _BTBN = "https://github.com/BtbN/FFmpeg-Builds/releases/download/latest"

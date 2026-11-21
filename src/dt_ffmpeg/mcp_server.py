@@ -7,23 +7,23 @@ import logging
 import sys
 from typing import Any
 
-from ffmpeg_zeo.bins import resolve_binaries
-from ffmpeg_zeo.catalog import filter_help, list_codecs, list_filters
-from ffmpeg_zeo.compile import compile_graph
-from ffmpeg_zeo.errors import BinaryNotFoundError
-from ffmpeg_zeo.ir import Graph
-from ffmpeg_zeo.probe import probe
-from ffmpeg_zeo.recipes import RECIPES, convert, run_recipe
-from ffmpeg_zeo.run import run
+from dt_ffmpeg.bins import resolve_binaries
+from dt_ffmpeg.catalog import filter_help, list_codecs, list_filters
+from dt_ffmpeg.compile import compile_graph
+from dt_ffmpeg.errors import BinaryNotFoundError
+from dt_ffmpeg.ir import Graph
+from dt_ffmpeg.probe import probe
+from dt_ffmpeg.recipes import RECIPES, convert, run_recipe
+from dt_ffmpeg.run import run
 
 logging.basicConfig(level=logging.INFO, stream=sys.stderr)
-logger = logging.getLogger("ffmpeg_zeo.mcp")
+logger = logging.getLogger("dt_ffmpeg.mcp")
 
 
 def _server() -> Any:
     from mcp.server import MCPServer
 
-    mcp = MCPServer("ffmpeg-zeo")
+    mcp = MCPServer("dt-ffmpeg")
 
     @mcp.tool()
     def doctor() -> dict[str, Any]:
@@ -102,8 +102,8 @@ def main() -> None:
     except ImportError as exc:
         if exc.name and (exc.name == "mcp" or exc.name.startswith("mcp.")):
             print(
-                "ffmpeg-zeo MCP support is not installed. "
-                'Run `pip install "ffmpeg-zeo[mcp]"`.',
+                "dt-ffmpeg MCP support is not installed. "
+                'Run `pip install "dt-ffmpeg[mcp]"`.',
                 file=sys.stderr,
             )
             raise SystemExit(1) from exc

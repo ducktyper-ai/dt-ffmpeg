@@ -1,16 +1,16 @@
 ---
-name: ffmpeg-zeo
+name: dt-ffmpeg
 description: >-
-  Build and run FFmpeg filter graphs with ffmpeg-zeo. Probe first, compile before
+  Build and run FFmpeg filter graphs with dt-ffmpeg. Probe first, compile before
   run, prefer recipes, never invent filter names.
 ---
 
-# ffmpeg-zeo (Claude Code)
+# dt-ffmpeg (Claude Code)
 
 Same workflow as the Cursor skill: doctor → probe → recipe or Graph JSON → compile → run.
 
-Python: `from ffmpeg_zeo import input, probe, convert`
+Python: `from dt_ffmpeg import input, probe, convert`
 
-CLI: `uv run ffmpeg-zeo probe FILE --json`
+CLI: `uv run dt-ffmpeg probe FILE --json`
 
 MCP tools: `doctor`, `probe_file`, `compile_graph_json`, `run_graph`, `convert_file`, `list_ffmpeg_filters`, `run_named_recipe`.

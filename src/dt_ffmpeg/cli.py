@@ -9,20 +9,20 @@ from typing import Any
 
 import typer
 
-from ffmpeg_zeo.bins import (
+from dt_ffmpeg.bins import (
     BinaryInfo,
     download_lgpl_binaries,
     get_ffmpeg_bin,
     get_ffprobe_bin,
     resolve_binaries,
 )
-from ffmpeg_zeo.catalog import filter_help, list_codecs, list_filters
-from ffmpeg_zeo.compile import compile_graph, get_args
-from ffmpeg_zeo.errors import BinaryNotFoundError, FFmpegError
-from ffmpeg_zeo.ir import Graph
-from ffmpeg_zeo.probe import probe
-from ffmpeg_zeo.recipes import RECIPES, convert, run_recipe
-from ffmpeg_zeo.run import run
+from dt_ffmpeg.catalog import filter_help, list_codecs, list_filters
+from dt_ffmpeg.compile import compile_graph, get_args
+from dt_ffmpeg.errors import BinaryNotFoundError, FFmpegError
+from dt_ffmpeg.ir import Graph
+from dt_ffmpeg.probe import probe
+from dt_ffmpeg.recipes import RECIPES, convert, run_recipe
+from dt_ffmpeg.run import run
 
 app = typer.Typer(
     no_args_is_help=True, add_completion=False, pretty_exceptions_enable=False
@@ -160,9 +160,9 @@ def doctor(
 
 @app.command()
 def version() -> None:
-    from ffmpeg_zeo import __version__
+    from dt_ffmpeg import __version__
 
-    payload: dict[str, Any] = {"ffmpeg-zeo": __version__}
+    payload: dict[str, Any] = {"dt-ffmpeg": __version__}
     try:
         payload["ffmpeg"] = str(get_ffmpeg_bin())
         payload["ffprobe"] = str(get_ffprobe_bin())

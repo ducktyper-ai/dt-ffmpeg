@@ -33,7 +33,7 @@ class BinaryNotFoundError(FFmpegError):
             name,
             message=(
                 f"{name} not found. Install FFmpeg, set {name.upper()}_BINARY, "
-                "or run `ffmpeg-zeo doctor --download` on Linux or Windows."
+                "or run `dt-ffmpeg doctor --download` on Linux or Windows."
             ),
         )
         self.name = name

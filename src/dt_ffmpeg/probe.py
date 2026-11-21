@@ -10,9 +10,9 @@ from typing import Any
 
 from pydantic import BaseModel, ConfigDict, Field
 
-from ffmpeg_zeo.bins import get_ffprobe_bin
-from ffmpeg_zeo.compile import kwargs_to_cli
-from ffmpeg_zeo.errors import FFmpegError
+from dt_ffmpeg.bins import get_ffprobe_bin
+from dt_ffmpeg.compile import kwargs_to_cli
+from dt_ffmpeg.errors import FFmpegError
 
 
 class ProbeStream(BaseModel):

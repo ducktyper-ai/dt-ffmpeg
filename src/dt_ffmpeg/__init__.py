@@ -1,13 +1,13 @@
-"""ffmpeg-zeo — typed FFmpeg graphs for Python, CLIs, and coding agents."""
+"""dt-ffmpeg — typed FFmpeg graphs for Python, CLIs, and coding agents."""
 
 from __future__ import annotations
 
 from typing import Any
 
-from ffmpeg_zeo.bins import get_ffmpeg_bin, get_ffprobe_bin, resolve_binaries
-from ffmpeg_zeo.catalog import filter_help, has_filter, list_codecs, list_filters
-from ffmpeg_zeo.errors import BinaryNotFoundError, FFmpegError
-from ffmpeg_zeo.fluent import (
+from dt_ffmpeg.bins import get_ffmpeg_bin, get_ffprobe_bin, resolve_binaries
+from dt_ffmpeg.catalog import filter_help, has_filter, list_codecs, list_filters
+from dt_ffmpeg.errors import BinaryNotFoundError, FFmpegError
+from dt_ffmpeg.fluent import (
     Stream,
     compile,
     concat,
@@ -25,14 +25,14 @@ from ffmpeg_zeo.fluent import (
     trim,
     vflip,
 )
-from ffmpeg_zeo.ir import FilterNode, Graph, InputNode, OutputNode, StreamRef
-from ffmpeg_zeo.probe import ProbeResult, probe, probe_async
-from ffmpeg_zeo.recipes import convert, list_recipes, run_recipe
-from ffmpeg_zeo.run import Progress, RunResult
-from ffmpeg_zeo.run import run as run_graph
-from ffmpeg_zeo.run import run_async as run_graph_async
+from dt_ffmpeg.ir import FilterNode, Graph, InputNode, OutputNode, StreamRef
+from dt_ffmpeg.probe import ProbeResult, probe, probe_async
+from dt_ffmpeg.recipes import convert, list_recipes, run_recipe
+from dt_ffmpeg.run import Progress, RunResult
+from dt_ffmpeg.run import run as run_graph
+from dt_ffmpeg.run import run_async as run_graph_async
 
-__version__ = "0.1.0"
+__version__ = "0.2.0"
 
 filter = filter_
 compile_graph = compile

@@ -1,8 +1,0 @@
-{
-  "mcpServers": {
-    "ffmpeg-zeo": {
-      "command": "uv",
-      "args": ["run", "ffmpeg-zeo-mcp"]
-    }
-  }
-}

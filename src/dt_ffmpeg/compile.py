@@ -6,8 +6,8 @@ from collections import defaultdict
 from collections.abc import Iterable, Mapping
 from typing import Any
 
-from ffmpeg_zeo.escape import escape_chars, escape_filter_token
-from ffmpeg_zeo.ir import FilterNode, Graph, InputNode, OutputNode, StreamRef
+from dt_ffmpeg.escape import escape_chars, escape_filter_token
+from dt_ffmpeg.ir import FilterNode, Graph, InputNode, OutputNode, StreamRef
 
 
 def kwargs_to_cli(kwargs: Mapping[str, Any]) -> list[str]:

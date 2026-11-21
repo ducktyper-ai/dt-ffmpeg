@@ -1,7 +1,7 @@
 from __future__ import annotations
 
-from ffmpeg_zeo.compile import get_args
-from ffmpeg_zeo.recipes import list_recipes, scale, thumbnail, transcode_h264
+from dt_ffmpeg.compile import get_args
+from dt_ffmpeg.recipes import list_recipes, scale, thumbnail, transcode_h264
 
 
 def test_list_recipes() -> None:

@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "dt-ffmpeg": {
+      "command": "uv",
+      "args": ["run", "dt-ffmpeg-mcp"]
+    }
+  }
+}

@@ -7,9 +7,9 @@ import json
 import pytest
 from typer.testing import CliRunner
 
-import ffmpeg_zeo.cli as cli
-from ffmpeg_zeo import __version__
-from ffmpeg_zeo.errors import FFmpegError
+import dt_ffmpeg.cli as cli
+from dt_ffmpeg import __version__
+from dt_ffmpeg.errors import FFmpegError
 
 runner = CliRunner()
 
@@ -17,7 +17,7 @@ runner = CliRunner()
 def test_version_json() -> None:
     result = runner.invoke(cli.app, ["version"])
     assert result.exit_code == 0
-    assert json.loads(result.stdout)["ffmpeg-zeo"] == __version__
+    assert json.loads(result.stdout)["dt-ffmpeg"] == __version__
 
 
 def test_main_serializes_ffmpeg_errors(

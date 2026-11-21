@@ -6,8 +6,8 @@ from collections.abc import Callable
 from pathlib import Path
 from typing import Any
 
-from ffmpeg_zeo.fluent import Stream, concat, input
-from ffmpeg_zeo.ir import Graph, OverwritePolicy
+from dt_ffmpeg.fluent import Stream, concat, input
+from dt_ffmpeg.ir import Graph, OverwritePolicy
 
 
 def convert(src: str, dst: str, *, overwrite: OverwritePolicy = "always") -> Graph:

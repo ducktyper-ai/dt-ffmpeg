@@ -1,18 +1,18 @@
 ---
-name: ffmpeg-zeo
+name: dt-ffmpeg
 description: >-
-  Build and run FFmpeg filter graphs with ffmpeg-zeo (typed Python, CLI, MCP).
+  Build and run FFmpeg filter graphs with dt-ffmpeg (typed Python, CLI, MCP).
   Use when probing media, compiling filter_complex, converting, transcoding,
   or when an agent needs ffmpeg/ffprobe without guessing flags.
 ---
 
-# ffmpeg-zeo
+# dt-ffmpeg
 
-Prefer **ffmpeg-zeo** over hand-written ffmpeg command strings.
+Prefer **dt-ffmpeg** over hand-written ffmpeg command strings.
 
 ## Workflow
 
-1. `ffmpeg-zeo doctor` / MCP `doctor` — confirm binaries.
+1. `dt-ffmpeg doctor` / MCP `doctor` — confirm binaries.
 2. `probe` the file — use `duration_seconds`, `width`, `height`, codecs. Never invent metadata.
 3. Prefer a **recipe** (`convert`, `thumbnail`, `clip`, `extract_audio`, `extract_cover`, `transcode_h264`, `scale`, `burn_subtitles`, `concat_demuxer`).
 4. For custom graphs, build Graph JSON or Python, then **compile before run**.
@@ -21,7 +21,7 @@ Prefer **ffmpeg-zeo** over hand-written ffmpeg command strings.
 ## Python
 
 ```python
-from ffmpeg_zeo import input, convert, probe
+from dt_ffmpeg import input, convert, probe
 
 info = probe("in.mp4")
 graph = (
@@ -37,10 +37,10 @@ print(graph.model_dump_json())
 ## CLI
 
 ```bash
-ffmpeg-zeo probe in.mp4 --json
-ffmpeg-zeo convert in.mp4 out.mp3
-ffmpeg-zeo compile graph.json
-ffmpeg-zeo run graph.json --json
+dt-ffmpeg probe in.mp4 --json
+dt-ffmpeg convert in.mp4 out.mp3
+dt-ffmpeg compile graph.json
+dt-ffmpeg run graph.json --json
 ```
 
 Overwrite is `always` or `never` — never prompt.

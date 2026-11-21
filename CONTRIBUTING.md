@@ -1,6 +1,6 @@
-# Contributing to ffmpeg-zeo
+# Contributing to dt-ffmpeg
 
-Thanks for helping improve ffmpeg-zeo. Bug fixes, tests, documentation, and
+Thanks for helping improve dt-ffmpeg. Bug fixes, tests, documentation, and
 focused feature proposals are welcome.
 
 ## Development setup
@@ -9,17 +9,17 @@ You need Python 3.12 or newer, [uv](https://docs.astral.sh/uv/), and FFmpeg
 with ffprobe on `PATH`.
 
 ```bash
-git clone https://github.com/zeroemployeeorg/ffmpeg-zeo.git
-cd ffmpeg-zeo
+git clone https://github.com/ducktyper-ai/dt-ffmpeg.git
+cd dt-ffmpeg
 uv sync --extra dev --extra mcp
-uv run ffmpeg-zeo doctor
+uv run dt-ffmpeg doctor
 ```
 
 You can instead set `FFMPEG_BINARY` and `FFPROBE_BINARY` to executable paths.
 
 ## Make changes
 
-- Keep the public import as `import ffmpeg_zeo`.
+- Keep the public import as `import dt_ffmpeg`.
 - Add type annotations to public and internal Python APIs.
 - Prefer named recipes for common media operations.
 - Represent custom jobs as graph IR and compile before running.
@@ -64,9 +64,9 @@ virtual environments, credentials, API tokens, or downloaded FFmpeg binaries.
 
 ## Versioning and releases
 
-ffmpeg-zeo follows Semantic Versioning. Before 1.0, a minor release may
+dt-ffmpeg follows Semantic Versioning. Before 1.0, a minor release may
 contain breaking API changes. The package version is sourced from
-`src/ffmpeg_zeo/__init__.py`; the Claude plugin manifest is kept in sync.
+`src/dt_ffmpeg/__init__.py`; the Claude plugin manifest is kept in sync.
 
 Maintainers release through `.github/workflows/publish.yml`:
 
@@ -82,6 +82,6 @@ wheel and source distribution produced by the release workflow.
 ## Reporting issues
 
 Open an issue at
-<https://github.com/zeroemployeeorg/ffmpeg-zeo/issues>. Include a minimal
+<https://github.com/ducktyper-ai/dt-ffmpeg/issues>. Include a minimal
 reproduction, compiled argv, platform, Python version, and FFmpeg version.
 Remove private paths, media, and credentials first.

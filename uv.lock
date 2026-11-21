@@ -302,7 +302,7 @@ wheels = [
 ]
 
 [[package]]
-name = "ffmpeg-zeo"
+name = "dt-ffmpeg"
 source = { editable = "." }
 dependencies = [
     { name = "pydantic" },

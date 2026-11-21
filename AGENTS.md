@@ -1,9 +1,9 @@
 # Agent instructions
 
-This repository is **ffmpeg-zeo**, a typed FFmpeg graph library.
+This repository is **dt-ffmpeg**, a typed FFmpeg graph library.
 
-- Use the skill in `.cursor/skills/ffmpeg-zeo/SKILL.md`.
-- Python import: `import ffmpeg_zeo`.
-- CLI: `uv run ffmpeg-zeo`.
-- MCP: `uv run ffmpeg-zeo-mcp` (stdio). See `plugin/ffmpeg-zeo/.mcp.json`.
+- Use the skill in `.cursor/skills/dt-ffmpeg/SKILL.md`.
+- Python import: `import dt_ffmpeg`.
+- CLI: `uv run dt-ffmpeg`.
+- MCP: `uv run dt-ffmpeg-mcp` (stdio). See `plugin/dt-ffmpeg/.mcp.json`.
 - Probe first, compile before run, prefer recipes, never invent filter names.

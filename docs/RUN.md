@@ -30,7 +30,13 @@ A launchd job is not applicable.
 No secrets are needed.
 
 ## Port and health
-None. The health check is `uv run dt-ffmpeg doctor` returning `"ok": true`.
+None (no listener, no launchd job). Smoke command, instead of a health URL:
+
+```
+uv run dt-ffmpeg doctor
+```
+
+Expected: exit 0 and `"ok": true`.
 
 ## Data directory
 No persistent data. Only a binary cache when `doctor --download` is used (location printed by `doctor`).

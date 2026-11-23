@@ -3,7 +3,7 @@
 dt-ffmpeg is a **Python library with a command-line tool and a stdio MCP server, not a network server.** It has no listener, no port and no health URL. Read from `pyproject.toml`, `Makefile` and `src/dt_ffmpeg/cli.py`; not yet run on ENG-UK (UNVERIFIED until the first deployment).
 
 ## Runtime
-Python >= 3.12, `uv`, and `ffmpeg` + `ffprobe` (on PATH, or `dt-ffmpeg doctor --download` fetches an LGPL build into the cache). From the extracted release archive (never from a checkout):
+Python >= 3.12, `uv`, and `ffmpeg` + `ffprobe` on PATH or via `FFMPEG_BINARY`/`FFPROBE_BINARY`. Do not use `dt-ffmpeg doctor --download` on ENG-UK: it fetches a moving "latest" build with no digest pin (follow-up: pin a release and sha256). From the extracted release archive (never from a checkout):
 
 ```
 uv sync --no-dev --extra mcp

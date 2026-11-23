@@ -70,7 +70,8 @@ jobs:
         run: |
           uv venv --python 3.12 .release-venv
           uv pip install --python .release-venv/bin/python dist/*.whl
-          .release-venv/bin/python -c 'import dt_ffmpeg; assert dt_ffmpeg.__version__ == "0.1.0"'
+          expected="$(basename dist/*.whl | sed -E 's/^dt_ffmpeg-([^-]+)-.*/\1/')"
+          .release-venv/bin/python -c 'import sys, dt_ffmpeg; assert dt_ffmpeg.__version__ == sys.argv[1], dt_ffmpeg.__version__' "$expected"
           .release-venv/bin/dt-ffmpeg version
       - name: Upload distribution artifact
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1

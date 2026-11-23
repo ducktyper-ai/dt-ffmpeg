@@ -2,7 +2,7 @@
 
 UV := uv
 
-.PHONY: help setup format lint type test build check verify doctor hooks clean
+.PHONY: help setup format lint type test build check verify doctor hooks release clean
 
 help:
 	@echo "dt-ffmpeg"
@@ -15,6 +15,7 @@ help:
 	@echo "  make verify   lint + type + test + build (the release gate)"
 	@echo "  make doctor   dt-ffmpeg doctor (ffmpeg/ffprobe resolution)"
 	@echo "  make hooks    Install a git pre-push hook that runs make verify"
+	@echo "  make release  Archive of the tagged HEAD + .sha256 (darwin-arm64 naming)"
 	@echo "  make clean    Remove build and cache output"
 
 setup:
@@ -43,6 +44,20 @@ check: verify
 
 doctor:
 	$(UV) run dt-ffmpeg doctor
+
+# Release archive of the exact commit. No build step: pure Python, installed with uv from the archive.
+# Output: dist/dt-ffmpeg-<version>-darwin-arm64.tar.gz and .sha256. HEAD must carry tag v<version>.
+VERSION := $(shell sed -n 's/^__version__ = "\(.*\)"/\1/p' src/dt_ffmpeg/__init__.py | head -1)
+ARCHIVE := dist/dt-ffmpeg-$(VERSION)-darwin-arm64.tar.gz
+
+release:
+	@test -z "$$(git status --porcelain)" || { echo "tree not clean" >&2; exit 1; }
+	@git describe --exact-match --tags HEAD 2>/dev/null | grep -qx "v$(VERSION)" || { echo "HEAD must be tagged v$(VERSION)" >&2; exit 1; }
+	@grep -q "^## \[$(VERSION)\]" CHANGELOG.md || { echo "CHANGELOG has no $(VERSION) entry" >&2; exit 1; }
+	@mkdir -p dist
+	git archive --format=tar.gz --prefix=dt-ffmpeg-$(VERSION)/ -o $(ARCHIVE) HEAD
+	cd dist && shasum -a 256 $(notdir $(ARCHIVE)) > $(notdir $(ARCHIVE)).sha256
+	@cat $(ARCHIVE).sha256
 
 hooks:
 	@mkdir -p .git/hooks

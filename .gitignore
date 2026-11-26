@@ -61,3 +61,7 @@ tests/sample_data/out*.mp4
 # Operating System
 .DS_Store
 Thumbs.db
+# Node
+node_modules/
+coverage/
+*.tsbuildinfo

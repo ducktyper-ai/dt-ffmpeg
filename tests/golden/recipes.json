@@ -1,0 +1,787 @@
+[
+  {
+    "argv": [
+      "-i",
+      "in.mov",
+      "out.mp4",
+      "-y"
+    ],
+    "graph": {
+      "filters": [],
+      "global_args": [],
+      "inputs": [
+        {
+          "filename": "in.mov",
+          "id": "in1",
+          "kwargs": {}
+        }
+      ],
+      "outputs": [
+        {
+          "filename": "out.mp4",
+          "id": "out2",
+          "inputs": [
+            {
+              "node_id": "in1",
+              "pad": null,
+              "selector": null
+            }
+          ],
+          "kwargs": {}
+        }
+      ],
+      "overwrite": "always"
+    },
+    "kwargs": {
+      "dst": "out.mp4",
+      "src": "in.mov"
+    },
+    "recipe": "convert"
+  },
+  {
+    "argv": [
+      "-i",
+      "in.mov",
+      "out.mp4",
+      "-n"
+    ],
+    "graph": {
+      "filters": [],
+      "global_args": [],
+      "inputs": [
+        {
+          "filename": "in.mov",
+          "id": "in1",
+          "kwargs": {}
+        }
+      ],
+      "outputs": [
+        {
+          "filename": "out.mp4",
+          "id": "out2",
+          "inputs": [
+            {
+              "node_id": "in1",
+              "pad": null,
+              "selector": null
+            }
+          ],
+          "kwargs": {}
+        }
+      ],
+      "overwrite": "never"
+    },
+    "kwargs": {
+      "dst": "out.mp4",
+      "overwrite": "never",
+      "src": "in.mov"
+    },
+    "recipe": "convert"
+  },
+  {
+    "argv": [
+      "-ss",
+      "1.0",
+      "-i",
+      "in.mp4",
+      "-vframes",
+      "1",
+      "thumb.jpg",
+      "-y"
+    ],
+    "graph": {
+      "filters": [],
+      "global_args": [],
+      "inputs": [
+        {
+          "filename": "in.mp4",
+          "id": "in1",
+          "kwargs": {
+            "ss": 1.0
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "filename": "thumb.jpg",
+          "id": "out2",
+          "inputs": [
+            {
+              "node_id": "in1",
+              "pad": null,
+              "selector": null
+            }
+          ],
+          "kwargs": {
+            "vframes": 1
+          }
+        }
+      ],
+      "overwrite": "always"
+    },
+    "kwargs": {
+      "dst": "thumb.jpg",
+      "src": "in.mp4"
+    },
+    "recipe": "thumbnail"
+  },
+  {
+    "argv": [
+      "-ss",
+      "12.5",
+      "-i",
+      "in.mp4",
+      "-vframes",
+      "1",
+      "thumb.jpg",
+      "-y"
+    ],
+    "graph": {
+      "filters": [],
+      "global_args": [],
+      "inputs": [
+        {
+          "filename": "in.mp4",
+          "id": "in1",
+          "kwargs": {
+            "ss": 12.5
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "filename": "thumb.jpg",
+          "id": "out2",
+          "inputs": [
+            {
+              "node_id": "in1",
+              "pad": null,
+              "selector": null
+            }
+          ],
+          "kwargs": {
+            "vframes": 1
+          }
+        }
+      ],
+      "overwrite": "always"
+    },
+    "kwargs": {
+      "dst": "thumb.jpg",
+      "src": "in.mp4",
+      "time": 12.5
+    },
+    "recipe": "thumbnail"
+  },
+  {
+    "argv": [
+      "-i",
+      "in.mov",
+      "-acodec",
+      "aac",
+      "-crf",
+      "23",
+      "-preset",
+      "medium",
+      "-vcodec",
+      "libx264",
+      "out.mp4",
+      "-y"
+    ],
+    "graph": {
+      "filters": [],
+      "global_args": [],
+      "inputs": [
+        {
+          "filename": "in.mov",
+          "id": "in1",
+          "kwargs": {}
+        }
+      ],
+      "outputs": [
+        {
+          "filename": "out.mp4",
+          "id": "out2",
+          "inputs": [
+            {
+              "node_id": "in1",
+              "pad": null,
+              "selector": null
+            }
+          ],
+          "kwargs": {
+            "acodec": "aac",
+            "crf": 23,
+            "preset": "medium",
+            "vcodec": "libx264"
+          }
+        }
+      ],
+      "overwrite": "always"
+    },
+    "kwargs": {
+      "dst": "out.mp4",
+      "src": "in.mov"
+    },
+    "recipe": "transcode_h264"
+  },
+  {
+    "argv": [
+      "-i",
+      "in.mov",
+      "-acodec",
+      "aac",
+      "-crf",
+      "18",
+      "-preset",
+      "slow",
+      "-vcodec",
+      "libx264",
+      "out.mp4",
+      "-y"
+    ],
+    "graph": {
+      "filters": [],
+      "global_args": [],
+      "inputs": [
+        {
+          "filename": "in.mov",
+          "id": "in1",
+          "kwargs": {}
+        }
+      ],
+      "outputs": [
+        {
+          "filename": "out.mp4",
+          "id": "out2",
+          "inputs": [
+            {
+              "node_id": "in1",
+              "pad": null,
+              "selector": null
+            }
+          ],
+          "kwargs": {
+            "acodec": "aac",
+            "crf": 18,
+            "preset": "slow",
+            "vcodec": "libx264"
+          }
+        }
+      ],
+      "overwrite": "always"
+    },
+    "kwargs": {
+      "crf": 18,
+      "dst": "out.mp4",
+      "preset": "slow",
+      "src": "in.mov"
+    },
+    "recipe": "transcode_h264"
+  },
+  {
+    "argv": [
+      "-i",
+      "in.mp4",
+      "-acodec",
+      "copy",
+      "-vn",
+      "out.m4a",
+      "-y"
+    ],
+    "graph": {
+      "filters": [],
+      "global_args": [],
+      "inputs": [
+        {
+          "filename": "in.mp4",
+          "id": "in1",
+          "kwargs": {}
+        }
+      ],
+      "outputs": [
+        {
+          "filename": "out.m4a",
+          "id": "out2",
+          "inputs": [
+            {
+              "node_id": "in1",
+              "pad": null,
+              "selector": null
+            }
+          ],
+          "kwargs": {
+            "acodec": "copy",
+            "vn": null
+          }
+        }
+      ],
+      "overwrite": "always"
+    },
+    "kwargs": {
+      "dst": "out.m4a",
+      "src": "in.mp4"
+    },
+    "recipe": "extract_audio"
+  },
+  {
+    "argv": [
+      "-i",
+      "in.mp4",
+      "-acodec",
+      "libmp3lame",
+      "-vn",
+      "out.mp3",
+      "-y"
+    ],
+    "graph": {
+      "filters": [],
+      "global_args": [],
+      "inputs": [
+        {
+          "filename": "in.mp4",
+          "id": "in1",
+          "kwargs": {}
+        }
+      ],
+      "outputs": [
+        {
+          "filename": "out.mp3",
+          "id": "out2",
+          "inputs": [
+            {
+              "node_id": "in1",
+              "pad": null,
+              "selector": null
+            }
+          ],
+          "kwargs": {
+            "acodec": "libmp3lame",
+            "vn": null
+          }
+        }
+      ],
+      "overwrite": "always"
+    },
+    "kwargs": {
+      "codec": "libmp3lame",
+      "dst": "out.mp3",
+      "src": "in.mp4"
+    },
+    "recipe": "extract_audio"
+  },
+  {
+    "argv": [
+      "-i",
+      "in.mp3",
+      "-an",
+      "-vcodec",
+      "copy",
+      "cover.jpg",
+      "-y"
+    ],
+    "graph": {
+      "filters": [],
+      "global_args": [],
+      "inputs": [
+        {
+          "filename": "in.mp3",
+          "id": "in1",
+          "kwargs": {}
+        }
+      ],
+      "outputs": [
+        {
+          "filename": "cover.jpg",
+          "id": "out2",
+          "inputs": [
+            {
+              "node_id": "in1",
+              "pad": null,
+              "selector": null
+            }
+          ],
+          "kwargs": {
+            "an": null,
+            "vcodec": "copy"
+          }
+        }
+      ],
+      "overwrite": "always"
+    },
+    "kwargs": {
+      "dst": "cover.jpg",
+      "src": "in.mp3"
+    },
+    "recipe": "extract_cover"
+  },
+  {
+    "argv": [
+      "-i",
+      "in.mp4",
+      "-filter_complex",
+      "[0]scale=1280:-2[s0]",
+      "-map",
+      "[s0]",
+      "out.mp4",
+      "-y"
+    ],
+    "graph": {
+      "filters": [
+        {
+          "args": [
+            1280,
+            -2
+          ],
+          "id": "f2",
+          "inputs": [
+            {
+              "node_id": "in1",
+              "pad": null,
+              "selector": null
+            }
+          ],
+          "kwargs": {},
+          "name": "scale"
+        }
+      ],
+      "global_args": [],
+      "inputs": [
+        {
+          "filename": "in.mp4",
+          "id": "in1",
+          "kwargs": {}
+        }
+      ],
+      "outputs": [
+        {
+          "filename": "out.mp4",
+          "id": "out3",
+          "inputs": [
+            {
+              "node_id": "f2",
+              "pad": null,
+              "selector": null
+            }
+          ],
+          "kwargs": {}
+        }
+      ],
+      "overwrite": "always"
+    },
+    "kwargs": {
+      "dst": "out.mp4",
+      "src": "in.mp4"
+    },
+    "recipe": "scale"
+  },
+  {
+    "argv": [
+      "-i",
+      "in.mp4",
+      "-filter_complex",
+      "[0]scale=640:360[s0]",
+      "-map",
+      "[s0]",
+      "out.mp4",
+      "-y"
+    ],
+    "graph": {
+      "filters": [
+        {
+          "args": [
+            640,
+            360
+          ],
+          "id": "f2",
+          "inputs": [
+            {
+              "node_id": "in1",
+              "pad": null,
+              "selector": null
+            }
+          ],
+          "kwargs": {},
+          "name": "scale"
+        }
+      ],
+      "global_args": [],
+      "inputs": [
+        {
+          "filename": "in.mp4",
+          "id": "in1",
+          "kwargs": {}
+        }
+      ],
+      "outputs": [
+        {
+          "filename": "out.mp4",
+          "id": "out3",
+          "inputs": [
+            {
+              "node_id": "f2",
+              "pad": null,
+              "selector": null
+            }
+          ],
+          "kwargs": {}
+        }
+      ],
+      "overwrite": "always"
+    },
+    "kwargs": {
+      "dst": "out.mp4",
+      "height": 360,
+      "src": "in.mp4",
+      "width": 640
+    },
+    "recipe": "scale"
+  },
+  {
+    "argv": [
+      "-ss",
+      "5",
+      "-i",
+      "in.mp4",
+      "-c",
+      "copy",
+      "out.mp4",
+      "-y"
+    ],
+    "graph": {
+      "filters": [],
+      "global_args": [],
+      "inputs": [
+        {
+          "filename": "in.mp4",
+          "id": "in1",
+          "kwargs": {
+            "ss": 5
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "filename": "out.mp4",
+          "id": "out2",
+          "inputs": [
+            {
+              "node_id": "in1",
+              "pad": null,
+              "selector": null
+            }
+          ],
+          "kwargs": {
+            "c": "copy"
+          }
+        }
+      ],
+      "overwrite": "always"
+    },
+    "kwargs": {
+      "dst": "out.mp4",
+      "src": "in.mp4",
+      "start": 5
+    },
+    "recipe": "clip"
+  },
+  {
+    "argv": [
+      "-ss",
+      "00:00:05",
+      "-to",
+      "00:00:09.5",
+      "-i",
+      "in.mp4",
+      "-c",
+      "copy",
+      "out.mp4",
+      "-y"
+    ],
+    "graph": {
+      "filters": [],
+      "global_args": [],
+      "inputs": [
+        {
+          "filename": "in.mp4",
+          "id": "in1",
+          "kwargs": {
+            "ss": "00:00:05",
+            "to": "00:00:09.5"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "filename": "out.mp4",
+          "id": "out2",
+          "inputs": [
+            {
+              "node_id": "in1",
+              "pad": null,
+              "selector": null
+            }
+          ],
+          "kwargs": {
+            "c": "copy"
+          }
+        }
+      ],
+      "overwrite": "always"
+    },
+    "kwargs": {
+      "dst": "out.mp4",
+      "end": "00:00:09.5",
+      "src": "in.mp4",
+      "start": "00:00:05"
+    },
+    "recipe": "clip"
+  },
+  {
+    "argv": [
+      "-i",
+      "in.mp4",
+      "-filter_complex",
+      "[0]subtitles=subs.srt[s0]",
+      "-map",
+      "[s0]",
+      "out.mp4",
+      "-y"
+    ],
+    "graph": {
+      "filters": [
+        {
+          "args": [
+            "subs.srt"
+          ],
+          "id": "f2",
+          "inputs": [
+            {
+              "node_id": "in1",
+              "pad": null,
+              "selector": null
+            }
+          ],
+          "kwargs": {},
+          "name": "subtitles"
+        }
+      ],
+      "global_args": [],
+      "inputs": [
+        {
+          "filename": "in.mp4",
+          "id": "in1",
+          "kwargs": {}
+        }
+      ],
+      "outputs": [
+        {
+          "filename": "out.mp4",
+          "id": "out3",
+          "inputs": [
+            {
+              "node_id": "f2",
+              "pad": null,
+              "selector": null
+            }
+          ],
+          "kwargs": {}
+        }
+      ],
+      "overwrite": "always"
+    },
+    "kwargs": {
+      "dst": "out.mp4",
+      "src": "in.mp4",
+      "subtitles": "subs.srt"
+    },
+    "recipe": "burn_subtitles"
+  },
+  {
+    "argv": [
+      "-i",
+      "a.mp4",
+      "-i",
+      "b.mp4",
+      "-i",
+      "c.mp4",
+      "-filter_complex",
+      "[0][1][2]concat=n=3[s0]",
+      "-map",
+      "[s0]",
+      "out.mp4",
+      "-y"
+    ],
+    "graph": {
+      "filters": [
+        {
+          "args": [],
+          "id": "f4",
+          "inputs": [
+            {
+              "node_id": "in1",
+              "pad": null,
+              "selector": null
+            },
+            {
+              "node_id": "in2",
+              "pad": null,
+              "selector": null
+            },
+            {
+              "node_id": "in3",
+              "pad": null,
+              "selector": null
+            }
+          ],
+          "kwargs": {
+            "n": 3
+          },
+          "name": "concat"
+        }
+      ],
+      "global_args": [],
+      "inputs": [
+        {
+          "filename": "a.mp4",
+          "id": "in1",
+          "kwargs": {}
+        },
+        {
+          "filename": "b.mp4",
+          "id": "in2",
+          "kwargs": {}
+        },
+        {
+          "filename": "c.mp4",
+          "id": "in3",
+          "kwargs": {}
+        }
+      ],
+      "outputs": [
+        {
+          "filename": "out.mp4",
+          "id": "out5",
+          "inputs": [
+            {
+              "node_id": "f4",
+              "pad": null,
+              "selector": null
+            }
+          ],
+          "kwargs": {}
+        }
+      ],
+      "overwrite": "always"
+    },
+    "kwargs": {
+      "dst": "out.mp4",
+      "paths": [
+        "a.mp4",
+        "b.mp4",
+        "c.mp4"
+      ]
+    },
+    "recipe": "concat_demuxer"
+  }
+]

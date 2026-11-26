@@ -8,6 +8,12 @@ While the project is below 1.0, minor releases may include breaking API changes.
 
 ## [Unreleased]
 
+### Changed
+
+- Rewrite in TypeScript (operator ruling of 23 Nov 2026; design: org-ducktyper-ai `dt-ffmpeg-SOW-01`). Phase 0 only: package scaffold (Node >= 24.12, ESM, zod, eslint, vitest), `make verify`, `make doctor`, `make hooks`, `make release`, and the golden-argv export script. No ffmpeg feature exists in TypeScript yet.
+- The Python package moved unchanged to `reference/python/` from the closed PR 6 head `211d45bf428c35c66fbf595fe48278ea7ff55b74` (see `reference/python/SOURCE-COMMIT`). It is frozen, is not built or published, and is excluded from `make verify`. It is removed once the TypeScript parity suite is green.
+- Removed the Python CI and PyPI publish workflows. No PyPI release will be made (ruling); the published `ffmpeg-zeo 0.1.0` stays as it is.
+
 ## [0.1.0] - 2026-08-19
 
 ### Added

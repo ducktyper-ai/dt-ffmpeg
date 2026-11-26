@@ -8,7 +8,8 @@ type StreamNames = Map<string, string>;
 
 const padKey = (nodeId: string, pad: Pad): string => JSON.stringify([nodeId, pad]);
 
-function optionsToArgs(kwargs: Options): string[] {
+/** @internal Options as argv, keys sorted. */
+export function optionsToArgs(kwargs: Options): string[] {
   const args: string[] = [];
   for (const key of Object.keys(kwargs).sort(compareCodePoints)) {
     const value = kwargs[key] as OptionValue;

@@ -1,7 +1,14 @@
 import { readFileSync } from "node:fs";
 
 export { compile, getArgs, type ArgsOptions, type CompileOptions } from "./compile.js";
-export { GraphError } from "./errors.js";
+export {
+  BinaryNotFoundError,
+  FFmpegAbortError,
+  FFmpegError,
+  FFmpegTimeoutError,
+  GraphError,
+  type FFmpegFailure,
+} from "./errors.js";
 export { escapeChars, escapeFilterToken } from "./escape.js";
 export { concat, filterStreams, input, mergeOutputs, output, Stream, type FilterOptions } from "./fluent.js";
 export * from "./ir.js";

@@ -1,3 +1,5 @@
+> **Status (26 Nov 2026): rewrite in progress.** dt-ffmpeg is moving from Python to TypeScript (operator ruling of 23 Nov 2026). The TypeScript package is at phase 0 (scaffold only). The text below describes the Python `ffmpeg-zeo 0.1.0`, which is frozen in `reference/python/` and published on PyPI as before. Design: org-ducktyper-ai `projects/dt-ffmpeg/sow/dt-ffmpeg/dt-ffmpeg-SOW-01-typescript-port-design.md`.
+
 # ffmpeg-zeo
 
 [![PyPI](https://img.shields.io/pypi/v/ffmpeg-zeo)](https://pypi.org/project/ffmpeg-zeo/)

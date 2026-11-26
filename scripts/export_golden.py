@@ -22,6 +22,7 @@ keys, no timestamps. `meta.json` records the reference commit read from referenc
 from __future__ import annotations
 
 import argparse
+import importlib
 import json
 import sys
 from pathlib import Path
@@ -57,8 +58,10 @@ class Recorder:
 
 
 def install(recorder: Recorder) -> None:
-    import dt_ffmpeg.compile as compile_mod
-    import dt_ffmpeg.fluent as fluent_mod
+    # importlib, not `import dt_ffmpeg.compile as ...`: the package re-exports a function named `compile`,
+    # which shadows the submodule as an attribute.
+    compile_mod = importlib.import_module("dt_ffmpeg.compile")
+    fluent_mod = importlib.import_module("dt_ffmpeg.fluent")
 
     original = compile_mod.get_args
 
@@ -73,8 +76,8 @@ def install(recorder: Recorder) -> None:
 
 
 def export_recipes() -> list[dict[str, Any]]:
-    import dt_ffmpeg.recipes as recipes
-    from dt_ffmpeg.compile import get_args
+    recipes = importlib.import_module("dt_ffmpeg.recipes")
+    get_args = importlib.import_module("dt_ffmpeg.compile").get_args
 
     calls: list[tuple[str, dict[str, Any]]] = [
         ("convert", {"src": "in.mov", "dst": "out.mp4"}),
@@ -112,7 +115,7 @@ def export_recipes() -> list[dict[str, Any]]:
 
 
 def export_escape() -> list[dict[str, Any]]:
-    from dt_ffmpeg.escape import escape_chars
+    escape_chars = importlib.import_module("dt_ffmpeg.escape").escape_chars
 
     cases: list[tuple[Any, str]] = [
         ("a:b", ":"),

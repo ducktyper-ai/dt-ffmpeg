@@ -1,0 +1,37 @@
+[
+  {
+    "chars": ":",
+    "escaped": "a\\:b",
+    "value": "a:b"
+  },
+  {
+    "chars": ":\\",
+    "escaped": "a\\\\\\:b",
+    "value": "a\\:b"
+  },
+  {
+    "chars": "\\':,[]%",
+    "escaped": "a\\:b\\,c\\[d\\]e\\%{}f\\'g\\'h\\\\i",
+    "value": "a:b,c[d]e%{}f'g'h\\i"
+  },
+  {
+    "chars": ":\\",
+    "escaped": "123",
+    "value": 123
+  },
+  {
+    "chars": ":",
+    "escaped": "",
+    "value": ""
+  },
+  {
+    "chars": ":,",
+    "escaped": "plain",
+    "value": "plain"
+  },
+  {
+    "chars": ":\\,",
+    "escaped": "c\\:\\\\path\\\\to\\,file",
+    "value": "c:\\path\\to,file"
+  }
+]

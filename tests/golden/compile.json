@@ -1,0 +1,2163 @@
+[
+  {
+    "argv": [
+      "-i",
+      "dummy.mp4",
+      "dummy2.mp4"
+    ],
+    "graph": {
+      "filters": [],
+      "global_args": [],
+      "inputs": [
+        {
+          "filename": "dummy.mp4",
+          "id": "in1",
+          "kwargs": {}
+        }
+      ],
+      "outputs": [
+        {
+          "filename": "dummy2.mp4",
+          "id": "out2",
+          "inputs": [
+            {
+              "node_id": "in1",
+              "pad": null,
+              "selector": null
+            }
+          ],
+          "kwargs": {}
+        }
+      ],
+      "overwrite": null
+    },
+    "overwrite": null,
+    "source": "tests/test_compile.py::test_get_args_simple"
+  },
+  {
+    "argv": [
+      "-i",
+      "dummy.mp4",
+      "dummy2.mp4",
+      "-progress",
+      "someurl"
+    ],
+    "graph": {
+      "filters": [],
+      "global_args": [
+        "-progress",
+        "someurl"
+      ],
+      "inputs": [
+        {
+          "filename": "dummy.mp4",
+          "id": "in1",
+          "kwargs": {}
+        }
+      ],
+      "outputs": [
+        {
+          "filename": "dummy2.mp4",
+          "id": "out2",
+          "inputs": [
+            {
+              "node_id": "in1",
+              "pad": null,
+              "selector": null
+            }
+          ],
+          "kwargs": {}
+        }
+      ],
+      "overwrite": null
+    },
+    "overwrite": null,
+    "source": "tests/test_compile.py::test_global_args"
+  },
+  {
+    "argv": [
+      "-i",
+      "dummy.mp4",
+      "-streamid",
+      "0:0x101",
+      "-streamid",
+      "1:0x102",
+      "dummy2.mp4"
+    ],
+    "graph": {
+      "filters": [],
+      "global_args": [],
+      "inputs": [
+        {
+          "filename": "dummy.mp4",
+          "id": "in1",
+          "kwargs": {}
+        }
+      ],
+      "outputs": [
+        {
+          "filename": "dummy2.mp4",
+          "id": "out2",
+          "inputs": [
+            {
+              "node_id": "in1",
+              "pad": null,
+              "selector": null
+            }
+          ],
+          "kwargs": {
+            "streamid": [
+              "0:0x101",
+              "1:0x102"
+            ]
+          }
+        }
+      ],
+      "overwrite": null
+    },
+    "overwrite": null,
+    "source": "tests/test_compile.py::test_repeated_args"
+  },
+  {
+    "argv": [
+      "-i",
+      "/Users/rodbot/zeo/seat-gates/rt7962/golden.xnAI9nJP/source/reference/python/tests/sample_data/in1.mp4",
+      "-i",
+      "/Users/rodbot/zeo/seat-gates/rt7962/golden.xnAI9nJP/source/reference/python/tests/sample_data/overlay.png",
+      "-filter_complex",
+      "[0]vflip[s0];[s0]split=2[s1][s2];[s1]trim=end_frame=20:start_frame=10[s3];[s2]trim=end_frame=40:start_frame=30[s4];[s3][s4]concat=n=2[s5];[1]crop=158:112:10:10[s6];[s6]hflip[s7];[s5][s7]overlay=eof_action=repeat[s8];[s8]drawbox=50:50:120:120:red:t=5[s9]",
+      "-map",
+      "[s9]",
+      "/Users/rodbot/zeo/seat-gates/rt7962/golden.xnAI9nJP/source/reference/python/tests/sample_data/out1.mp4",
+      "-y"
+    ],
+    "graph": {
+      "filters": [
+        {
+          "args": [],
+          "id": "f2",
+          "inputs": [
+            {
+              "node_id": "in1",
+              "pad": null,
+              "selector": null
+            }
+          ],
+          "kwargs": {},
+          "name": "vflip"
+        },
+        {
+          "args": [],
+          "id": "f3",
+          "inputs": [
+            {
+              "node_id": "f2",
+              "pad": null,
+              "selector": null
+            }
+          ],
+          "kwargs": {},
+          "name": "split"
+        },
+        {
+          "args": [],
+          "id": "f4",
+          "inputs": [
+            {
+              "node_id": "f3",
+              "pad": 0,
+              "selector": null
+            }
+          ],
+          "kwargs": {
+            "end_frame": 20,
+            "start_frame": 10
+          },
+          "name": "trim"
+        },
+        {
+          "args": [],
+          "id": "f5",
+          "inputs": [
+            {
+              "node_id": "f3",
+              "pad": 1,
+              "selector": null
+            }
+          ],
+          "kwargs": {
+            "end_frame": 40,
+            "start_frame": 30
+          },
+          "name": "trim"
+        },
+        {
+          "args": [],
+          "id": "f6",
+          "inputs": [
+            {
+              "node_id": "f4",
+              "pad": null,
+              "selector": null
+            },
+            {
+              "node_id": "f5",
+              "pad": null,
+              "selector": null
+            }
+          ],
+          "kwargs": {
+            "n": 2
+          },
+          "name": "concat"
+        },
+        {
+          "args": [
+            158,
+            112,
+            10,
+            10
+          ],
+          "id": "f8",
+          "inputs": [
+            {
+              "node_id": "in7",
+              "pad": null,
+              "selector": null
+            }
+          ],
+          "kwargs": {},
+          "name": "crop"
+        },
+        {
+          "args": [],
+          "id": "f9",
+          "inputs": [
+            {
+              "node_id": "f8",
+              "pad": null,
+              "selector": null
+            }
+          ],
+          "kwargs": {},
+          "name": "hflip"
+        },
+        {
+          "args": [],
+          "id": "f10",
+          "inputs": [
+            {
+              "node_id": "f6",
+              "pad": null,
+              "selector": null
+            },
+            {
+              "node_id": "f9",
+              "pad": null,
+              "selector": null
+            }
+          ],
+          "kwargs": {
+            "eof_action": "repeat"
+          },
+          "name": "overlay"
+        },
+        {
+          "args": [
+            50,
+            50,
+            120,
+            120,
+            "red"
+          ],
+          "id": "f11",
+          "inputs": [
+            {
+              "node_id": "f10",
+              "pad": null,
+              "selector": null
+            }
+          ],
+          "kwargs": {
+            "t": 5
+          },
+          "name": "drawbox"
+        }
+      ],
+      "global_args": [],
+      "inputs": [
+        {
+          "filename": "/Users/rodbot/zeo/seat-gates/rt7962/golden.xnAI9nJP/source/reference/python/tests/sample_data/in1.mp4",
+          "id": "in1",
+          "kwargs": {}
+        },
+        {
+          "filename": "/Users/rodbot/zeo/seat-gates/rt7962/golden.xnAI9nJP/source/reference/python/tests/sample_data/overlay.png",
+          "id": "in7",
+          "kwargs": {}
+        }
+      ],
+      "outputs": [
+        {
+          "filename": "/Users/rodbot/zeo/seat-gates/rt7962/golden.xnAI9nJP/source/reference/python/tests/sample_data/out1.mp4",
+          "id": "out12",
+          "inputs": [
+            {
+              "node_id": "f11",
+              "pad": null,
+              "selector": null
+            }
+          ],
+          "kwargs": {}
+        }
+      ],
+      "overwrite": "always"
+    },
+    "overwrite": null,
+    "source": "tests/test_compile.py::test_complex_filter_args"
+  },
+  {
+    "argv": [
+      "-i",
+      "/Users/rodbot/zeo/seat-gates/rt7962/golden.xnAI9nJP/source/reference/python/tests/sample_data/in1.mp4",
+      "-i",
+      "/Users/rodbot/zeo/seat-gates/rt7962/golden.xnAI9nJP/source/reference/python/tests/sample_data/overlay.png",
+      "-map",
+      "0",
+      "-map",
+      "1",
+      "/Users/rodbot/zeo/seat-gates/rt7962/golden.xnAI9nJP/source/reference/python/tests/sample_data/out1.mp4"
+    ],
+    "graph": {
+      "filters": [],
+      "global_args": [],
+      "inputs": [
+        {
+          "filename": "/Users/rodbot/zeo/seat-gates/rt7962/golden.xnAI9nJP/source/reference/python/tests/sample_data/in1.mp4",
+          "id": "in1",
+          "kwargs": {}
+        },
+        {
+          "filename": "/Users/rodbot/zeo/seat-gates/rt7962/golden.xnAI9nJP/source/reference/python/tests/sample_data/overlay.png",
+          "id": "in2",
+          "kwargs": {}
+        }
+      ],
+      "outputs": [
+        {
+          "filename": "/Users/rodbot/zeo/seat-gates/rt7962/golden.xnAI9nJP/source/reference/python/tests/sample_data/out1.mp4",
+          "id": "out3",
+          "inputs": [
+            {
+              "node_id": "in1",
+              "pad": null,
+              "selector": null
+            },
+            {
+              "node_id": "in2",
+              "pad": null,
+              "selector": null
+            }
+          ],
+          "kwargs": {}
+        }
+      ],
+      "overwrite": null
+    },
+    "overwrite": null,
+    "source": "tests/test_compile.py::test_combined_output"
+  },
+  {
+    "argv": [
+      "-i",
+      "/Users/rodbot/zeo/seat-gates/rt7962/golden.xnAI9nJP/source/reference/python/tests/sample_data/in1.mp4",
+      "-filter_complex",
+      "[0:a]aecho=0.8:0.9:1000:0.3[s0];[0:v]hflip[s1]",
+      "-map",
+      "[s0]",
+      "-map",
+      "[s1]",
+      "/Users/rodbot/zeo/seat-gates/rt7962/golden.xnAI9nJP/source/reference/python/tests/sample_data/out1.mp4"
+    ],
+    "graph": {
+      "filters": [
+        {
+          "args": [
+            0.8,
+            0.9,
+            1000,
+            0.3
+          ],
+          "id": "f2",
+          "inputs": [
+            {
+              "node_id": "in1",
+              "pad": null,
+              "selector": "a"
+            }
+          ],
+          "kwargs": {},
+          "name": "aecho"
+        },
+        {
+          "args": [],
+          "id": "f3",
+          "inputs": [
+            {
+              "node_id": "in1",
+              "pad": null,
+              "selector": "v"
+            }
+          ],
+          "kwargs": {},
+          "name": "hflip"
+        }
+      ],
+      "global_args": [],
+      "inputs": [
+        {
+          "filename": "/Users/rodbot/zeo/seat-gates/rt7962/golden.xnAI9nJP/source/reference/python/tests/sample_data/in1.mp4",
+          "id": "in1",
+          "kwargs": {}
+        }
+      ],
+      "outputs": [
+        {
+          "filename": "/Users/rodbot/zeo/seat-gates/rt7962/golden.xnAI9nJP/source/reference/python/tests/sample_data/out1.mp4",
+          "id": "out4",
+          "inputs": [
+            {
+              "node_id": "f2",
+              "pad": null,
+              "selector": null
+            },
+            {
+              "node_id": "f3",
+              "pad": null,
+              "selector": null
+            }
+          ],
+          "kwargs": {}
+        }
+      ],
+      "overwrite": null
+    },
+    "overwrite": null,
+    "source": "tests/test_compile.py::test_filter_with_selector[True]"
+  },
+  {
+    "argv": [
+      "-i",
+      "in1.mp4",
+      "-i",
+      "in2.mp4",
+      "-filter_complex",
+      "[0][1]concat=n=2[s0]",
+      "-map",
+      "[s0]",
+      "out.mp4"
+    ],
+    "graph": {
+      "filters": [
+        {
+          "args": [],
+          "id": "f3",
+          "inputs": [
+            {
+              "node_id": "in1",
+              "pad": null,
+              "selector": null
+            },
+            {
+              "node_id": "in2",
+              "pad": null,
+              "selector": null
+            }
+          ],
+          "kwargs": {
+            "n": 2
+          },
+          "name": "concat"
+        }
+      ],
+      "global_args": [],
+      "inputs": [
+        {
+          "filename": "in1.mp4",
+          "id": "in1",
+          "kwargs": {}
+        },
+        {
+          "filename": "in2.mp4",
+          "id": "in2",
+          "kwargs": {}
+        }
+      ],
+      "outputs": [
+        {
+          "filename": "out.mp4",
+          "id": "out4",
+          "inputs": [
+            {
+              "node_id": "f3",
+              "pad": null,
+              "selector": null
+            }
+          ],
+          "kwargs": {}
+        }
+      ],
+      "overwrite": null
+    },
+    "overwrite": null,
+    "source": "tests/test_compile.py::test_concat_video_only"
+  },
+  {
+    "argv": [
+      "-i",
+      "in1.mp4",
+      "-i",
+      "in2.mp4",
+      "-filter_complex",
+      "[0][1]concat=a=1:n=2:v=0[s0]",
+      "-map",
+      "[s0]",
+      "out.mp4"
+    ],
+    "graph": {
+      "filters": [
+        {
+          "args": [],
+          "id": "f3",
+          "inputs": [
+            {
+              "node_id": "in1",
+              "pad": null,
+              "selector": null
+            },
+            {
+              "node_id": "in2",
+              "pad": null,
+              "selector": null
+            }
+          ],
+          "kwargs": {
+            "a": 1,
+            "n": 2,
+            "v": 0
+          },
+          "name": "concat"
+        }
+      ],
+      "global_args": [],
+      "inputs": [
+        {
+          "filename": "in1.mp4",
+          "id": "in1",
+          "kwargs": {}
+        },
+        {
+          "filename": "in2.mp4",
+          "id": "in2",
+          "kwargs": {}
+        }
+      ],
+      "outputs": [
+        {
+          "filename": "out.mp4",
+          "id": "out4",
+          "inputs": [
+            {
+              "node_id": "f3",
+              "pad": null,
+              "selector": null
+            }
+          ],
+          "kwargs": {}
+        }
+      ],
+      "overwrite": null
+    },
+    "overwrite": null,
+    "source": "tests/test_compile.py::test_concat_audio_only"
+  },
+  {
+    "argv": [
+      "-i",
+      "in1.mp4",
+      "-i",
+      "in2.mp4",
+      "-filter_complex",
+      "[1]hflip[s0];[0:v][0:a][s0][1:a]concat=a=1:n=2:v=1[s1][s2]",
+      "-map",
+      "[s1]",
+      "-map",
+      "[s2]",
+      "out.mp4"
+    ],
+    "graph": {
+      "filters": [
+        {
+          "args": [],
+          "id": "f2",
+          "inputs": [
+            {
+              "node_id": "in2",
+              "pad": null,
+              "selector": null
+            }
+          ],
+          "kwargs": {},
+          "name": "hflip"
+        },
+        {
+          "args": [],
+          "id": "f3",
+          "inputs": [
+            {
+              "node_id": "in1",
+              "pad": null,
+              "selector": "v"
+            },
+            {
+              "node_id": "in1",
+              "pad": null,
+              "selector": "a"
+            },
+            {
+              "node_id": "f2",
+              "pad": null,
+              "selector": null
+            },
+            {
+              "node_id": "in2",
+              "pad": null,
+              "selector": "a"
+            }
+          ],
+          "kwargs": {
+            "a": 1,
+            "n": 2,
+            "v": 1
+          },
+          "name": "concat"
+        }
+      ],
+      "global_args": [],
+      "inputs": [
+        {
+          "filename": "in1.mp4",
+          "id": "in1",
+          "kwargs": {}
+        },
+        {
+          "filename": "in2.mp4",
+          "id": "in2",
+          "kwargs": {}
+        }
+      ],
+      "outputs": [
+        {
+          "filename": "out.mp4",
+          "id": "out4",
+          "inputs": [
+            {
+              "node_id": "f3",
+              "pad": 0,
+              "selector": null
+            },
+            {
+              "node_id": "f3",
+              "pad": 1,
+              "selector": null
+            }
+          ],
+          "kwargs": {}
+        }
+      ],
+      "overwrite": null
+    },
+    "overwrite": null,
+    "source": "tests/test_compile.py::test_concat_audio_video"
+  },
+  {
+    "argv": [
+      "-i",
+      "in",
+      "-b:v",
+      "1000",
+      "-b:a",
+      "200",
+      "out"
+    ],
+    "graph": {
+      "filters": [],
+      "global_args": [],
+      "inputs": [
+        {
+          "filename": "in",
+          "id": "in1",
+          "kwargs": {}
+        }
+      ],
+      "outputs": [
+        {
+          "filename": "out",
+          "id": "out2",
+          "inputs": [
+            {
+              "node_id": "in1",
+              "pad": null,
+              "selector": null
+            }
+          ],
+          "kwargs": {
+            "audio_bitrate": 200,
+            "video_bitrate": 1000
+          }
+        }
+      ],
+      "overwrite": null
+    },
+    "overwrite": null,
+    "source": "tests/test_compile.py::test_bitrate"
+  },
+  {
+    "argv": [
+      "-i",
+      "in",
+      "-video_size",
+      "320x240",
+      "out"
+    ],
+    "graph": {
+      "filters": [],
+      "global_args": [],
+      "inputs": [
+        {
+          "filename": "in",
+          "id": "in1",
+          "kwargs": {}
+        }
+      ],
+      "outputs": [
+        {
+          "filename": "out",
+          "id": "out2",
+          "inputs": [
+            {
+              "node_id": "in1",
+              "pad": null,
+              "selector": null
+            }
+          ],
+          "kwargs": {
+            "video_size": [
+              320,
+              240
+            ]
+          }
+        }
+      ],
+      "overwrite": null
+    },
+    "overwrite": null,
+    "source": "tests/test_compile.py::test_video_size[video_size0]"
+  },
+  {
+    "argv": [
+      "-i",
+      "in",
+      "-video_size",
+      "320x240",
+      "out"
+    ],
+    "graph": {
+      "filters": [],
+      "global_args": [],
+      "inputs": [
+        {
+          "filename": "in",
+          "id": "in1",
+          "kwargs": {}
+        }
+      ],
+      "outputs": [
+        {
+          "filename": "out",
+          "id": "out2",
+          "inputs": [
+            {
+              "node_id": "in1",
+              "pad": null,
+              "selector": null
+            }
+          ],
+          "kwargs": {
+            "video_size": "320x240"
+          }
+        }
+      ],
+      "overwrite": null
+    },
+    "overwrite": null,
+    "source": "tests/test_compile.py::test_video_size[320x240]"
+  },
+  {
+    "argv": [
+      "-i",
+      "dummy.mp4",
+      "-filter_complex",
+      "[0]custom_filter=a:b:kwarg1=c[s0]",
+      "-map",
+      "[s0]",
+      "dummy2.mp4"
+    ],
+    "graph": {
+      "filters": [
+        {
+          "args": [
+            "a",
+            "b"
+          ],
+          "id": "f2",
+          "inputs": [
+            {
+              "node_id": "in1",
+              "pad": null,
+              "selector": null
+            }
+          ],
+          "kwargs": {
+            "kwarg1": "c"
+          },
+          "name": "custom_filter"
+        }
+      ],
+      "global_args": [],
+      "inputs": [
+        {
+          "filename": "dummy.mp4",
+          "id": "in1",
+          "kwargs": {}
+        }
+      ],
+      "outputs": [
+        {
+          "filename": "dummy2.mp4",
+          "id": "out3",
+          "inputs": [
+            {
+              "node_id": "f2",
+              "pad": null,
+              "selector": null
+            }
+          ],
+          "kwargs": {}
+        }
+      ],
+      "overwrite": null
+    },
+    "overwrite": null,
+    "source": "tests/test_compile.py::test_custom_filter"
+  },
+  {
+    "argv": [
+      "-ss",
+      "10.5",
+      "-i",
+      "in",
+      "out"
+    ],
+    "graph": {
+      "filters": [],
+      "global_args": [],
+      "inputs": [
+        {
+          "filename": "in",
+          "id": "in1",
+          "kwargs": {
+            "ss": 10.5
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "filename": "out",
+          "id": "out2",
+          "inputs": [
+            {
+              "node_id": "in1",
+              "pad": null,
+              "selector": null
+            }
+          ],
+          "kwargs": {}
+        }
+      ],
+      "overwrite": null
+    },
+    "overwrite": null,
+    "source": "tests/test_compile.py::test_input_start_time"
+  },
+  {
+    "argv": [
+      "-i",
+      "in.mp4",
+      "out1.mp4",
+      "out2.mp4"
+    ],
+    "graph": {
+      "filters": [],
+      "global_args": [],
+      "inputs": [
+        {
+          "filename": "in.mp4",
+          "id": "in1",
+          "kwargs": {}
+        }
+      ],
+      "outputs": [
+        {
+          "filename": "out1.mp4",
+          "id": "out2",
+          "inputs": [
+            {
+              "node_id": "in1",
+              "pad": null,
+              "selector": null
+            }
+          ],
+          "kwargs": {}
+        },
+        {
+          "filename": "out2.mp4",
+          "id": "out3",
+          "inputs": [
+            {
+              "node_id": "in1",
+              "pad": null,
+              "selector": null
+            }
+          ],
+          "kwargs": {}
+        }
+      ],
+      "overwrite": null
+    },
+    "overwrite": null,
+    "source": "tests/test_compile.py::test_merge_outputs"
+  },
+  {
+    "argv": [
+      "-i",
+      "in.mp4",
+      "out2.mp4",
+      "out1.mp4"
+    ],
+    "graph": {
+      "filters": [],
+      "global_args": [],
+      "inputs": [
+        {
+          "filename": "in.mp4",
+          "id": "in1",
+          "kwargs": {}
+        }
+      ],
+      "outputs": [
+        {
+          "filename": "out2.mp4",
+          "id": "out2",
+          "inputs": [
+            {
+              "node_id": "in1",
+              "pad": null,
+              "selector": null
+            }
+          ],
+          "kwargs": {}
+        },
+        {
+          "filename": "out1.mp4",
+          "id": "out3",
+          "inputs": [
+            {
+              "node_id": "in1",
+              "pad": null,
+              "selector": null
+            }
+          ],
+          "kwargs": {}
+        }
+      ],
+      "overwrite": null
+    },
+    "overwrite": null,
+    "source": "tests/test_compile.py::test_merge_outputs"
+  },
+  {
+    "argv": [
+      "-i",
+      "in1.mp4",
+      "-i",
+      "in2.mp4",
+      "out1.mp4",
+      "-map",
+      "1",
+      "out2.mp4"
+    ],
+    "graph": {
+      "filters": [],
+      "global_args": [],
+      "inputs": [
+        {
+          "filename": "in1.mp4",
+          "id": "in1",
+          "kwargs": {}
+        },
+        {
+          "filename": "in2.mp4",
+          "id": "in3",
+          "kwargs": {}
+        }
+      ],
+      "outputs": [
+        {
+          "filename": "out1.mp4",
+          "id": "out2",
+          "inputs": [
+            {
+              "node_id": "in1",
+              "pad": null,
+              "selector": null
+            }
+          ],
+          "kwargs": {}
+        },
+        {
+          "filename": "out2.mp4",
+          "id": "out4",
+          "inputs": [
+            {
+              "node_id": "in3",
+              "pad": null,
+              "selector": null
+            }
+          ],
+          "kwargs": {}
+        }
+      ],
+      "overwrite": null
+    },
+    "overwrite": null,
+    "source": "tests/test_compile.py::test_multi_passthrough"
+  },
+  {
+    "argv": [
+      "-i",
+      "in2.mp4",
+      "-i",
+      "in1.mp4",
+      "out2.mp4",
+      "-map",
+      "1",
+      "out1.mp4"
+    ],
+    "graph": {
+      "filters": [],
+      "global_args": [],
+      "inputs": [
+        {
+          "filename": "in2.mp4",
+          "id": "in1",
+          "kwargs": {}
+        },
+        {
+          "filename": "in1.mp4",
+          "id": "in3",
+          "kwargs": {}
+        }
+      ],
+      "outputs": [
+        {
+          "filename": "out2.mp4",
+          "id": "out2",
+          "inputs": [
+            {
+              "node_id": "in1",
+              "pad": null,
+              "selector": null
+            }
+          ],
+          "kwargs": {}
+        },
+        {
+          "filename": "out1.mp4",
+          "id": "out4",
+          "inputs": [
+            {
+              "node_id": "in3",
+              "pad": null,
+              "selector": null
+            }
+          ],
+          "kwargs": {}
+        }
+      ],
+      "overwrite": null
+    },
+    "overwrite": null,
+    "source": "tests/test_compile.py::test_multi_passthrough"
+  },
+  {
+    "argv": [
+      "-i",
+      "/Users/rodbot/zeo/seat-gates/rt7962/golden.xnAI9nJP/source/reference/python/tests/sample_data/in1.mp4",
+      "-map",
+      "0:1",
+      "-map",
+      "0:2",
+      "/Users/rodbot/zeo/seat-gates/rt7962/golden.xnAI9nJP/source/reference/python/tests/sample_data/out1.mp4"
+    ],
+    "graph": {
+      "filters": [],
+      "global_args": [],
+      "inputs": [
+        {
+          "filename": "/Users/rodbot/zeo/seat-gates/rt7962/golden.xnAI9nJP/source/reference/python/tests/sample_data/in1.mp4",
+          "id": "in1",
+          "kwargs": {}
+        }
+      ],
+      "outputs": [
+        {
+          "filename": "/Users/rodbot/zeo/seat-gates/rt7962/golden.xnAI9nJP/source/reference/python/tests/sample_data/out1.mp4",
+          "id": "out2",
+          "inputs": [
+            {
+              "node_id": "in1",
+              "pad": null,
+              "selector": "1"
+            },
+            {
+              "node_id": "in1",
+              "pad": null,
+              "selector": "2"
+            }
+          ],
+          "kwargs": {}
+        }
+      ],
+      "overwrite": null
+    },
+    "overwrite": null,
+    "source": "tests/test_compile.py::test_passthrough_selectors"
+  },
+  {
+    "argv": [
+      "-i",
+      "/Users/rodbot/zeo/seat-gates/rt7962/golden.xnAI9nJP/source/reference/python/tests/sample_data/in1.mp4",
+      "-filter_complex",
+      "[0:1]hflip[s0]",
+      "-map",
+      "[s0]",
+      "-map",
+      "0:2",
+      "/Users/rodbot/zeo/seat-gates/rt7962/golden.xnAI9nJP/source/reference/python/tests/sample_data/out1.mp4"
+    ],
+    "graph": {
+      "filters": [
+        {
+          "args": [],
+          "id": "f2",
+          "inputs": [
+            {
+              "node_id": "in1",
+              "pad": null,
+              "selector": "1"
+            }
+          ],
+          "kwargs": {},
+          "name": "hflip"
+        }
+      ],
+      "global_args": [],
+      "inputs": [
+        {
+          "filename": "/Users/rodbot/zeo/seat-gates/rt7962/golden.xnAI9nJP/source/reference/python/tests/sample_data/in1.mp4",
+          "id": "in1",
+          "kwargs": {}
+        }
+      ],
+      "outputs": [
+        {
+          "filename": "/Users/rodbot/zeo/seat-gates/rt7962/golden.xnAI9nJP/source/reference/python/tests/sample_data/out1.mp4",
+          "id": "out3",
+          "inputs": [
+            {
+              "node_id": "f2",
+              "pad": null,
+              "selector": null
+            },
+            {
+              "node_id": "in1",
+              "pad": null,
+              "selector": "2"
+            }
+          ],
+          "kwargs": {}
+        }
+      ],
+      "overwrite": null
+    },
+    "overwrite": null,
+    "source": "tests/test_compile.py::test_mixed_passthrough_selectors"
+  },
+  {
+    "argv": [
+      "-f",
+      "rawvideo",
+      "-video_size",
+      "32x32",
+      "-framerate",
+      "10",
+      "-pixel_format",
+      "rgb24",
+      "-i",
+      "pipe:0",
+      "-filter_complex",
+      "[0]trim=start_frame=2[s0]",
+      "-map",
+      "[s0]",
+      "-f",
+      "rawvideo",
+      "pipe:1"
+    ],
+    "graph": {
+      "filters": [
+        {
+          "args": [],
+          "id": "f2",
+          "inputs": [
+            {
+              "node_id": "in1",
+              "pad": null,
+              "selector": null
+            }
+          ],
+          "kwargs": {
+            "start_frame": 2
+          },
+          "name": "trim"
+        }
+      ],
+      "global_args": [],
+      "inputs": [
+        {
+          "filename": "pipe:0",
+          "id": "in1",
+          "kwargs": {
+            "format": "rawvideo",
+            "framerate": 10,
+            "pixel_format": "rgb24",
+            "video_size": [
+              32,
+              32
+            ]
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "filename": "pipe:1",
+          "id": "out3",
+          "inputs": [
+            {
+              "node_id": "f2",
+              "pad": null,
+              "selector": null
+            }
+          ],
+          "kwargs": {
+            "format": "rawvideo"
+          }
+        }
+      ],
+      "overwrite": null
+    },
+    "overwrite": null,
+    "source": "tests/test_compile.py::test_pipe_args"
+  },
+  {
+    "argv": [
+      "-i",
+      "in",
+      "-filter_complex",
+      "[0]drawtext=font=a\\\\:b:text=test[s0]",
+      "-map",
+      "[s0]",
+      "out"
+    ],
+    "graph": {
+      "filters": [
+        {
+          "args": [],
+          "id": "f2",
+          "inputs": [
+            {
+              "node_id": "in1",
+              "pad": null,
+              "selector": null
+            }
+          ],
+          "kwargs": {
+            "font": "a:b",
+            "text": "test"
+          },
+          "name": "drawtext"
+        }
+      ],
+      "global_args": [],
+      "inputs": [
+        {
+          "filename": "in",
+          "id": "in1",
+          "kwargs": {}
+        }
+      ],
+      "outputs": [
+        {
+          "filename": "out",
+          "id": "out3",
+          "inputs": [
+            {
+              "node_id": "f2",
+              "pad": null,
+              "selector": null
+            }
+          ],
+          "kwargs": {}
+        }
+      ],
+      "overwrite": null
+    },
+    "overwrite": null,
+    "source": "tests/test_compile.py::test_drawtext_escape"
+  },
+  {
+    "argv": [
+      "-i",
+      "in.mp4",
+      "-filter_complex",
+      "[0]hflip[s0]",
+      "-map",
+      "[s0]",
+      "out.mp4",
+      "-y"
+    ],
+    "graph": {
+      "filters": [
+        {
+          "args": [],
+          "id": "f2",
+          "inputs": [
+            {
+              "node_id": "in1",
+              "pad": null,
+              "selector": null
+            }
+          ],
+          "kwargs": {},
+          "name": "hflip"
+        }
+      ],
+      "global_args": [],
+      "inputs": [
+        {
+          "filename": "in.mp4",
+          "id": "in1",
+          "kwargs": {}
+        }
+      ],
+      "outputs": [
+        {
+          "filename": "out.mp4",
+          "id": "out3",
+          "inputs": [
+            {
+              "node_id": "f2",
+              "pad": null,
+              "selector": null
+            }
+          ],
+          "kwargs": {}
+        }
+      ],
+      "overwrite": "always"
+    },
+    "overwrite": null,
+    "source": "tests/test_compile.py::test_graph_json_roundtrip"
+  },
+  {
+    "argv": [
+      "-i",
+      "a.mp4",
+      "a.mp3",
+      "-y"
+    ],
+    "graph": {
+      "filters": [],
+      "global_args": [],
+      "inputs": [
+        {
+          "filename": "a.mp4",
+          "id": "in1",
+          "kwargs": {}
+        }
+      ],
+      "outputs": [
+        {
+          "filename": "a.mp3",
+          "id": "out2",
+          "inputs": [
+            {
+              "node_id": "in1",
+              "pad": null,
+              "selector": null
+            }
+          ],
+          "kwargs": {}
+        }
+      ],
+      "overwrite": "always"
+    },
+    "overwrite": null,
+    "source": "tests/test_compile.py::test_convert_recipe_args"
+  },
+  {
+    "argv": [
+      "-i",
+      "in.mov",
+      "out.mp4",
+      "-y"
+    ],
+    "graph": {
+      "filters": [],
+      "global_args": [],
+      "inputs": [
+        {
+          "filename": "in.mov",
+          "id": "in1",
+          "kwargs": {}
+        }
+      ],
+      "outputs": [
+        {
+          "filename": "out.mp4",
+          "id": "out2",
+          "inputs": [
+            {
+              "node_id": "in1",
+              "pad": null,
+              "selector": null
+            }
+          ],
+          "kwargs": {}
+        }
+      ],
+      "overwrite": "always"
+    },
+    "overwrite": null,
+    "source": "tests/test_compile.py::test_convert_recipe_args"
+  },
+  {
+    "argv": [
+      "-i",
+      "in.mov",
+      "out.mp4",
+      "-n"
+    ],
+    "graph": {
+      "filters": [],
+      "global_args": [],
+      "inputs": [
+        {
+          "filename": "in.mov",
+          "id": "in1",
+          "kwargs": {}
+        }
+      ],
+      "outputs": [
+        {
+          "filename": "out.mp4",
+          "id": "out2",
+          "inputs": [
+            {
+              "node_id": "in1",
+              "pad": null,
+              "selector": null
+            }
+          ],
+          "kwargs": {}
+        }
+      ],
+      "overwrite": "never"
+    },
+    "overwrite": null,
+    "source": "tests/test_compile.py::test_convert_recipe_args"
+  },
+  {
+    "argv": [
+      "-ss",
+      "1.0",
+      "-i",
+      "in.mp4",
+      "-vframes",
+      "1",
+      "thumb.jpg",
+      "-y"
+    ],
+    "graph": {
+      "filters": [],
+      "global_args": [],
+      "inputs": [
+        {
+          "filename": "in.mp4",
+          "id": "in1",
+          "kwargs": {
+            "ss": 1.0
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "filename": "thumb.jpg",
+          "id": "out2",
+          "inputs": [
+            {
+              "node_id": "in1",
+              "pad": null,
+              "selector": null
+            }
+          ],
+          "kwargs": {
+            "vframes": 1
+          }
+        }
+      ],
+      "overwrite": "always"
+    },
+    "overwrite": null,
+    "source": "tests/test_compile.py::test_convert_recipe_args"
+  },
+  {
+    "argv": [
+      "-ss",
+      "12.5",
+      "-i",
+      "in.mp4",
+      "-vframes",
+      "1",
+      "thumb.jpg",
+      "-y"
+    ],
+    "graph": {
+      "filters": [],
+      "global_args": [],
+      "inputs": [
+        {
+          "filename": "in.mp4",
+          "id": "in1",
+          "kwargs": {
+            "ss": 12.5
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "filename": "thumb.jpg",
+          "id": "out2",
+          "inputs": [
+            {
+              "node_id": "in1",
+              "pad": null,
+              "selector": null
+            }
+          ],
+          "kwargs": {
+            "vframes": 1
+          }
+        }
+      ],
+      "overwrite": "always"
+    },
+    "overwrite": null,
+    "source": "tests/test_compile.py::test_convert_recipe_args"
+  },
+  {
+    "argv": [
+      "-i",
+      "in.mov",
+      "-acodec",
+      "aac",
+      "-crf",
+      "23",
+      "-preset",
+      "medium",
+      "-vcodec",
+      "libx264",
+      "out.mp4",
+      "-y"
+    ],
+    "graph": {
+      "filters": [],
+      "global_args": [],
+      "inputs": [
+        {
+          "filename": "in.mov",
+          "id": "in1",
+          "kwargs": {}
+        }
+      ],
+      "outputs": [
+        {
+          "filename": "out.mp4",
+          "id": "out2",
+          "inputs": [
+            {
+              "node_id": "in1",
+              "pad": null,
+              "selector": null
+            }
+          ],
+          "kwargs": {
+            "acodec": "aac",
+            "crf": 23,
+            "preset": "medium",
+            "vcodec": "libx264"
+          }
+        }
+      ],
+      "overwrite": "always"
+    },
+    "overwrite": null,
+    "source": "tests/test_compile.py::test_convert_recipe_args"
+  },
+  {
+    "argv": [
+      "-i",
+      "in.mov",
+      "-acodec",
+      "aac",
+      "-crf",
+      "18",
+      "-preset",
+      "slow",
+      "-vcodec",
+      "libx264",
+      "out.mp4",
+      "-y"
+    ],
+    "graph": {
+      "filters": [],
+      "global_args": [],
+      "inputs": [
+        {
+          "filename": "in.mov",
+          "id": "in1",
+          "kwargs": {}
+        }
+      ],
+      "outputs": [
+        {
+          "filename": "out.mp4",
+          "id": "out2",
+          "inputs": [
+            {
+              "node_id": "in1",
+              "pad": null,
+              "selector": null
+            }
+          ],
+          "kwargs": {
+            "acodec": "aac",
+            "crf": 18,
+            "preset": "slow",
+            "vcodec": "libx264"
+          }
+        }
+      ],
+      "overwrite": "always"
+    },
+    "overwrite": null,
+    "source": "tests/test_compile.py::test_convert_recipe_args"
+  },
+  {
+    "argv": [
+      "-i",
+      "in.mp4",
+      "-acodec",
+      "copy",
+      "-vn",
+      "out.m4a",
+      "-y"
+    ],
+    "graph": {
+      "filters": [],
+      "global_args": [],
+      "inputs": [
+        {
+          "filename": "in.mp4",
+          "id": "in1",
+          "kwargs": {}
+        }
+      ],
+      "outputs": [
+        {
+          "filename": "out.m4a",
+          "id": "out2",
+          "inputs": [
+            {
+              "node_id": "in1",
+              "pad": null,
+              "selector": null
+            }
+          ],
+          "kwargs": {
+            "acodec": "copy",
+            "vn": null
+          }
+        }
+      ],
+      "overwrite": "always"
+    },
+    "overwrite": null,
+    "source": "tests/test_compile.py::test_convert_recipe_args"
+  },
+  {
+    "argv": [
+      "-i",
+      "in.mp4",
+      "-acodec",
+      "libmp3lame",
+      "-vn",
+      "out.mp3",
+      "-y"
+    ],
+    "graph": {
+      "filters": [],
+      "global_args": [],
+      "inputs": [
+        {
+          "filename": "in.mp4",
+          "id": "in1",
+          "kwargs": {}
+        }
+      ],
+      "outputs": [
+        {
+          "filename": "out.mp3",
+          "id": "out2",
+          "inputs": [
+            {
+              "node_id": "in1",
+              "pad": null,
+              "selector": null
+            }
+          ],
+          "kwargs": {
+            "acodec": "libmp3lame",
+            "vn": null
+          }
+        }
+      ],
+      "overwrite": "always"
+    },
+    "overwrite": null,
+    "source": "tests/test_compile.py::test_convert_recipe_args"
+  },
+  {
+    "argv": [
+      "-i",
+      "in.mp3",
+      "-an",
+      "-vcodec",
+      "copy",
+      "cover.jpg",
+      "-y"
+    ],
+    "graph": {
+      "filters": [],
+      "global_args": [],
+      "inputs": [
+        {
+          "filename": "in.mp3",
+          "id": "in1",
+          "kwargs": {}
+        }
+      ],
+      "outputs": [
+        {
+          "filename": "cover.jpg",
+          "id": "out2",
+          "inputs": [
+            {
+              "node_id": "in1",
+              "pad": null,
+              "selector": null
+            }
+          ],
+          "kwargs": {
+            "an": null,
+            "vcodec": "copy"
+          }
+        }
+      ],
+      "overwrite": "always"
+    },
+    "overwrite": null,
+    "source": "tests/test_compile.py::test_convert_recipe_args"
+  },
+  {
+    "argv": [
+      "-i",
+      "in.mp4",
+      "-filter_complex",
+      "[0]scale=1280:-2[s0]",
+      "-map",
+      "[s0]",
+      "out.mp4",
+      "-y"
+    ],
+    "graph": {
+      "filters": [
+        {
+          "args": [
+            1280,
+            -2
+          ],
+          "id": "f2",
+          "inputs": [
+            {
+              "node_id": "in1",
+              "pad": null,
+              "selector": null
+            }
+          ],
+          "kwargs": {},
+          "name": "scale"
+        }
+      ],
+      "global_args": [],
+      "inputs": [
+        {
+          "filename": "in.mp4",
+          "id": "in1",
+          "kwargs": {}
+        }
+      ],
+      "outputs": [
+        {
+          "filename": "out.mp4",
+          "id": "out3",
+          "inputs": [
+            {
+              "node_id": "f2",
+              "pad": null,
+              "selector": null
+            }
+          ],
+          "kwargs": {}
+        }
+      ],
+      "overwrite": "always"
+    },
+    "overwrite": null,
+    "source": "tests/test_compile.py::test_convert_recipe_args"
+  },
+  {
+    "argv": [
+      "-i",
+      "in.mp4",
+      "-filter_complex",
+      "[0]scale=640:360[s0]",
+      "-map",
+      "[s0]",
+      "out.mp4",
+      "-y"
+    ],
+    "graph": {
+      "filters": [
+        {
+          "args": [
+            640,
+            360
+          ],
+          "id": "f2",
+          "inputs": [
+            {
+              "node_id": "in1",
+              "pad": null,
+              "selector": null
+            }
+          ],
+          "kwargs": {},
+          "name": "scale"
+        }
+      ],
+      "global_args": [],
+      "inputs": [
+        {
+          "filename": "in.mp4",
+          "id": "in1",
+          "kwargs": {}
+        }
+      ],
+      "outputs": [
+        {
+          "filename": "out.mp4",
+          "id": "out3",
+          "inputs": [
+            {
+              "node_id": "f2",
+              "pad": null,
+              "selector": null
+            }
+          ],
+          "kwargs": {}
+        }
+      ],
+      "overwrite": "always"
+    },
+    "overwrite": null,
+    "source": "tests/test_compile.py::test_convert_recipe_args"
+  },
+  {
+    "argv": [
+      "-ss",
+      "5",
+      "-i",
+      "in.mp4",
+      "-c",
+      "copy",
+      "out.mp4",
+      "-y"
+    ],
+    "graph": {
+      "filters": [],
+      "global_args": [],
+      "inputs": [
+        {
+          "filename": "in.mp4",
+          "id": "in1",
+          "kwargs": {
+            "ss": 5
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "filename": "out.mp4",
+          "id": "out2",
+          "inputs": [
+            {
+              "node_id": "in1",
+              "pad": null,
+              "selector": null
+            }
+          ],
+          "kwargs": {
+            "c": "copy"
+          }
+        }
+      ],
+      "overwrite": "always"
+    },
+    "overwrite": null,
+    "source": "tests/test_compile.py::test_convert_recipe_args"
+  },
+  {
+    "argv": [
+      "-ss",
+      "00:00:05",
+      "-to",
+      "00:00:09.5",
+      "-i",
+      "in.mp4",
+      "-c",
+      "copy",
+      "out.mp4",
+      "-y"
+    ],
+    "graph": {
+      "filters": [],
+      "global_args": [],
+      "inputs": [
+        {
+          "filename": "in.mp4",
+          "id": "in1",
+          "kwargs": {
+            "ss": "00:00:05",
+            "to": "00:00:09.5"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "filename": "out.mp4",
+          "id": "out2",
+          "inputs": [
+            {
+              "node_id": "in1",
+              "pad": null,
+              "selector": null
+            }
+          ],
+          "kwargs": {
+            "c": "copy"
+          }
+        }
+      ],
+      "overwrite": "always"
+    },
+    "overwrite": null,
+    "source": "tests/test_compile.py::test_convert_recipe_args"
+  },
+  {
+    "argv": [
+      "-i",
+      "in.mp4",
+      "-filter_complex",
+      "[0]subtitles=subs.srt[s0]",
+      "-map",
+      "[s0]",
+      "out.mp4",
+      "-y"
+    ],
+    "graph": {
+      "filters": [
+        {
+          "args": [
+            "subs.srt"
+          ],
+          "id": "f2",
+          "inputs": [
+            {
+              "node_id": "in1",
+              "pad": null,
+              "selector": null
+            }
+          ],
+          "kwargs": {},
+          "name": "subtitles"
+        }
+      ],
+      "global_args": [],
+      "inputs": [
+        {
+          "filename": "in.mp4",
+          "id": "in1",
+          "kwargs": {}
+        }
+      ],
+      "outputs": [
+        {
+          "filename": "out.mp4",
+          "id": "out3",
+          "inputs": [
+            {
+              "node_id": "f2",
+              "pad": null,
+              "selector": null
+            }
+          ],
+          "kwargs": {}
+        }
+      ],
+      "overwrite": "always"
+    },
+    "overwrite": null,
+    "source": "tests/test_compile.py::test_convert_recipe_args"
+  },
+  {
+    "argv": [
+      "-i",
+      "a.mp4",
+      "-i",
+      "b.mp4",
+      "-i",
+      "c.mp4",
+      "-filter_complex",
+      "[0][1][2]concat=n=3[s0]",
+      "-map",
+      "[s0]",
+      "out.mp4",
+      "-y"
+    ],
+    "graph": {
+      "filters": [
+        {
+          "args": [],
+          "id": "f4",
+          "inputs": [
+            {
+              "node_id": "in1",
+              "pad": null,
+              "selector": null
+            },
+            {
+              "node_id": "in2",
+              "pad": null,
+              "selector": null
+            },
+            {
+              "node_id": "in3",
+              "pad": null,
+              "selector": null
+            }
+          ],
+          "kwargs": {
+            "n": 3
+          },
+          "name": "concat"
+        }
+      ],
+      "global_args": [],
+      "inputs": [
+        {
+          "filename": "a.mp4",
+          "id": "in1",
+          "kwargs": {}
+        },
+        {
+          "filename": "b.mp4",
+          "id": "in2",
+          "kwargs": {}
+        },
+        {
+          "filename": "c.mp4",
+          "id": "in3",
+          "kwargs": {}
+        }
+      ],
+      "outputs": [
+        {
+          "filename": "out.mp4",
+          "id": "out5",
+          "inputs": [
+            {
+              "node_id": "f4",
+              "pad": null,
+              "selector": null
+            }
+          ],
+          "kwargs": {}
+        }
+      ],
+      "overwrite": "always"
+    },
+    "overwrite": null,
+    "source": "tests/test_compile.py::test_convert_recipe_args"
+  }
+]

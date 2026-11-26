@@ -1,0 +1,29 @@
+{
+  "audio": {
+    "audioCodec": "aac",
+    "bitrateBps": 80056,
+    "durationSeconds": 1.0,
+    "fps": null,
+    "height": null,
+    "videoCodec": null,
+    "width": null
+  },
+  "image": {
+    "audioCodec": null,
+    "bitrateBps": null,
+    "durationSeconds": null,
+    "fps": 25.0,
+    "height": 117,
+    "videoCodec": "png",
+    "width": 163
+  },
+  "video": {
+    "audioCodec": "aac",
+    "bitrateBps": 383001,
+    "durationSeconds": 7.035646,
+    "fps": 29.97002997002997,
+    "height": 240,
+    "videoCodec": "h264",
+    "width": 320
+  }
+}

@@ -3,7 +3,7 @@ import { describe, expect, it } from "vitest";
 
 import { FFmpegError, probe, ProbeResultSchema, summarize } from "../src/probe.js";
 
-// Hand-written ffprobe output. Fixtures recorded from ffprobe 8.1.2 are still to be added.
+// Hand-written ffprobe output; recorded fixtures are compared in probe-parity.test.ts.
 const fake = [process.execPath, fileURLToPath(new URL("./fixtures/fake-process.mjs", import.meta.url))];
 const options = (mode: string) => ({ cmd: fake, env: { ...process.env, FAKE_MODE: mode } });
 
